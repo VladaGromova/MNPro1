@@ -1,0 +1,23 @@
+function[] = test3()
+% Projekt 1, zadanie 01, test 3
+% Vlada Gromova, 323770
+
+text = "Porównanie dokładności obliczeń dla wielomianów stopnia 1 i" + ...
+    " 2.\n\n";
+fprintf(text);
+
+fprintf("Równanie: y' = 2*x, y(1) = 1. Rozwiązanie: y = x^2. " + ...
+    "Błąd powinien być zerowy.\n");
+[resAM,resEul] = P1Z01_VGR_rozniczk(1,5,200,1,25,@(x) 1,@(x) 0,@(x) 2*x);
+fprintf("Błąd wyniku uzyskanego za pomocą metody Adamsa-Moultona:\t" + ...
+    "   %d \n",abs(25 - resAM(201)));
+fprintf("Błąd wyniku uzyskanego za pomocą zmodyfikowanej metody " + ...
+    "Eulera: %d \n\n",abs(25 - resEul(201)));
+
+fprintf("Równanie: y' = 3*x^2, y(1) = 1. Rozwiązanie: y = x^3. W tym" + ...
+    " przypadku obliczenia już nie będą dokładne.\n");
+[resAM,resEul] = P1Z01_VGR_rozniczk(1,5,200,1,25,@(x) 1,@(x) 0,@(x) 3*x^2);
+fprintf("Błąd wyniku uzyskanego za pomocą metody Adamsa-Moultona:\t " + ...
+    "  %d \n",abs(125 - resAM(201)));
+fprintf("Błąd wyniku uzyskanego za pomocą zmodyfikowanej metody " + ...
+    "Eulera: %d \n\n",abs(125 - resEul(201)));
